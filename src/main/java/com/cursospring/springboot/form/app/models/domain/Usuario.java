@@ -6,19 +6,19 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Usuario {
-	@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][a-zA-Z]{1}")
+	// @Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][a-zA-Z]{1}")
 	private String identificador;
-	@NotEmpty
+	// @NotEmpty
 	private String nombre;
-	@NotEmpty
+	// @NotEmpty
 	private String apellido;
-	@NotEmpty
-	@Size(min = 3, max = 8)
+	// @NotEmpty
+	// @Size(min = 3, max = 8)
 	private String username;
-	@NotEmpty
+	// @NotEmpty
 	private String password;
-	@NotEmpty
-	@Email
+	// @NotEmpty
+	// @Email
 	private String email;
 
 	public String getIdentificador() {
