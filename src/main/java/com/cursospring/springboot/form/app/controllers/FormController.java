@@ -53,16 +53,17 @@ public class FormController {
 	 * usuario.setEmail(email); usuario.setPassword(password);
 	 * model.addAttribute("titulo", "Resultado form: ");
 	 * model.addAttribute("usuario",usuario); return "resultado"; }
-	 */
-	/*
+	 * 
 	 * Version más limpia // Se puede indicar para recibir un objeto ya que el
 	 * nombre de los parámetros // (username, password) en HTML es igual a las
 	 * propiedades del objeto
 	 */
+
 	@PostMapping("/subir")
 	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
 		model.addAttribute("titulo", "Resultado form: ");
 		if (result.hasErrors()) {
+
 			/*
 			 * Map<String, String> errores = new HashMap<>();
 			 * result.getFieldErrors().forEach(err ->{ errores.put(err.getField(),
@@ -70,6 +71,7 @@ public class FormController {
 			 * ))); }); model.addAttribute("error", errores); ESTO YA LO HACE THYMELEAF
 			 * AUTOMATICAMENTE MAPEANDO LOS FIELDS EN EL FORM
 			 */
+
 			return "form";
 		}
 		model.addAttribute("usuario", usuario);

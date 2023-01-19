@@ -18,21 +18,27 @@ public class UsuarioValidador implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Usuario usuario = (Usuario) target;
-		
-		ValidationUtils.rejectIfEmpty(errors, "identificador", "NotEmpty.usuario.identificador");
-		ValidationUtils.rejectIfEmpty(errors, "nombre", "NotEmpty.usuario.nombre");
-		ValidationUtils.rejectIfEmpty(errors, "apellido", "NotEmpty.usuario.apellido");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty.usuario.username");
-		ValidationUtils.rejectIfEmpty(errors, "password", "NotEmpty.usuario.password");
-		ValidationUtils.rejectIfEmpty(errors, "email", "NotEmpty.usuario.email");
-	
-		
-		if(!usuario.getIdentificador().matches("[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][a-zA-Z]{1}")) {
-			errors.rejectValue("identificador", "Pattern.usuario.identificador");
-		}
-		if(!usuario.getEmail().contains("@")) {
-			errors.rejectValue("email", "Email.usuario.email");
-		}
+
+		/*
+		 * Las validaciones de los atributos IDENTIFICADOR y APELLIDO se desarrollaron
+		 * de manera independiente con anotaciones y clases validadoras propias
+		 */
+
+		/*
+		 * Las validaciones de los atributos se desarrollaron
+		 * de manera independiente con anotaciones y clases validadoras propias
+		 * 
+		 * ---------------------------- CÓDIGO ANTIGUO ----------------------------
+		 * ValidationUtils.rejectIfEmpty(errors, "nombre", "NotEmpty.usuario.nombre");
+		 * ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username",
+		 * "NotEmpty.usuario.username"); ValidationUtils.rejectIfEmpty(errors,
+		 * "password", "NotEmpty.usuario.password");
+		 * ValidationUtils.rejectIfEmpty(errors, "email", "NotEmpty.usuario.email");
+		 * 
+		 * if (!usuario.getEmail().contains("@")) { errors.rejectValue("email",
+		 * "Email.usuario.email"); }
+		 * ---------------------------- CÓDIGO ANTIGUO ----------------------------
+		 */
 	}
 
 }
