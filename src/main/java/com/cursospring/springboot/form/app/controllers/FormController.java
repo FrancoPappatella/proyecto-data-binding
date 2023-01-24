@@ -1,6 +1,7 @@
 package com.cursospring.springboot.form.app.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -109,6 +110,11 @@ public class FormController {
 		return "resultado";
 	}
 
+	@ModelAttribute("genero")
+	public List<String> genero(){
+		return Arrays.asList("Hombre","Mujer");
+	}
+	
 	/* Se agrega como atributo al Model, va a estar presente en todas las vistas */
 	@ModelAttribute("paises")
 	public List<Pais> listaPaises() {

@@ -19,19 +19,14 @@
 
 		<div>
 			<label>Género</label>
-			<div>
-			<label for="genero1">Hombre: </label>
-				<input name="genero" id="genero1" type="radio" value="Hombre"
-					th:field="*{genero}" />
+			<div th:each="gen: ${genero}">
+				<input type="radio" th:value="${gen}" th:field="*{genero}" /> <label
+					th:for="${#ids.prev('genero')}" th:text="${gen}"></label>
 			</div>
-			<div>
-			<label for="genero2">Mujer: </label>
-				<input name="genero" id="genero2" type="radio" value="Mujer"
-					th:field="*{genero}" />
-			</div>
+
 		</div>
-		<div th:if="${#fields.hasErrors('identificador')}"
-			th:errors="*{identificador}"></div>
+		<div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+
 
 		<div>
 			<label for="pais">País</label>
