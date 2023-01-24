@@ -18,6 +18,22 @@
 		</div>
 
 		<div>
+			<label>Género</label>
+			<div>
+			<label for="genero1">Hombre: </label>
+				<input name="genero" id="genero1" type="radio" value="Hombre"
+					th:field="*{genero}" />
+			</div>
+			<div>
+			<label for="genero2">Mujer: </label>
+				<input name="genero" id="genero2" type="radio" value="Mujer"
+					th:field="*{genero}" />
+			</div>
+		</div>
+		<div th:if="${#fields.hasErrors('identificador')}"
+			th:errors="*{identificador}"></div>
+
+		<div>
 			<label for="pais">País</label>
 			<div>
 				<select name="pais" id="pais" th:field="*{pais}">
