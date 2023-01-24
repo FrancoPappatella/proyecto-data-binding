@@ -8,12 +8,26 @@
 	<h1 th:text="${titulo}"></h1>
 
 	<ul>
+		<li>Id de país: <span th:text="${usuario.pais.id}"></span></li>
+		<li>Código de País: <span th:text="${usuario.pais.codigo}"></span></li>
+		<li>Nombre de País: <span th:text="${usuario.pais.nombre}"></span></li>
 		<li>Nombre: <span th:text="${usuario.nombre}"></span></li>
 		<li>Apellido: <span th:text="${usuario.apellido}"></span></li>
 		<li>Username: <span th:text="${usuario.username}"></span></li>
 		<li>Password: <span th:text="${usuario.password}"></span></li>
 		<li>Email: <span th:text="${usuario.email}"></span></li>
 		<li>Identificador: <span th:text="${usuario.identificador}"></span></li>
+		<li>Edad: <span th:text="${usuario.edad}"></span></li>
+		<li>Fecha de nacimiento: <span
+			th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></span></li>
+	</ul>
+
+	<div>Roles</div>
+
+	<ul th:each="role:${usuario.roles}">
+		<li  th:text="'id:' + ${role.id} "></li>
+		<li th:text=" 'nombre:' + ${role.nombre}"></li>
+		<li th:text="'role:' + ${role.role}"></li>
 	</ul>
 
 </body>

@@ -16,8 +16,8 @@ import javax.validation.Payload;
 public @interface Requerido {
 	String message() default "El campo es requerido";
 
-	Class<?>[] groups() default { };
+	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default { };
+	Class<? extends Payload>[] payload() default {};
 
 }

@@ -1,10 +1,13 @@
 package com.cursospring.springboot.form.app.models.domain;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import java.util.Date;
+import java.util.List;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import com.cursospring.springboot.form.app.validation.EmailFormat;
 import com.cursospring.springboot.form.app.validation.IdentificadorRegex;
@@ -14,17 +17,38 @@ public class Usuario {
 	@IdentificadorRegex()
 	@Requerido
 	private String identificador;
+
 	@Requerido
 	private String nombre;
+
 	@Requerido
 	private String apellido;
+
 	@Requerido
 	private String username;
+
 	@Requerido
 	private String password;
+
 	@EmailFormat
 	@Requerido
 	private String email;
+
+	@NotNull
+	@Min(18)
+	@Max(200)
+	private Integer edad;
+
+	@NotNull
+	@Past
+	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaNacimiento;
+
+	@NotNull
+	private Pais pais;
+
+	@NotEmpty
+	private List<Role> roles;
 
 	public String getIdentificador() {
 		return identificador;
@@ -72,6 +96,38 @@ public class Usuario {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 }
