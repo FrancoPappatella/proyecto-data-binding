@@ -36,8 +36,7 @@ import com.cursospring.springboot.form.app.models.domain.Role;
 public class FormController {
 
 	/*
-	 * @Autowired 
-	 * private UsuarioValidador validador;
+	 * @Autowired private UsuarioValidador validador;
 	 */
 
 	@Autowired
@@ -55,6 +54,8 @@ public class FormController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
+		// Se settea el atributo habilitar en true por defecto
+		usuario.setHabilitar(true);
 		model.addAttribute("titulo", "Formulario usuarios");
 		model.addAttribute("usuario", usuario);
 		return "form";
