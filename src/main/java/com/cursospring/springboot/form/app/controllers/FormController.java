@@ -57,6 +57,9 @@ public class FormController {
 		Usuario usuario = new Usuario();
 		// Se settea el atributo habilitar en true por defecto
 		usuario.setHabilitar(true);
+		// Se settea el role de usuario por defecto
+		usuario.setRoles(Arrays.asList(new Role(2, "Usuario", "ROLE_USER")));
+
 		model.addAttribute("titulo", "Formulario usuarios");
 		model.addAttribute("usuario", usuario);
 		return "form";
@@ -111,10 +114,10 @@ public class FormController {
 	}
 
 	@ModelAttribute("genero")
-	public List<String> genero(){
-		return Arrays.asList("Hombre","Mujer");
+	public List<String> genero() {
+		return Arrays.asList("Hombre", "Mujer");
 	}
-	
+
 	/* Se agrega como atributo al Model, va a estar presente en todas las vistas */
 	@ModelAttribute("paises")
 	public List<Pais> listaPaises() {
