@@ -8,15 +8,20 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+<link th:href="@{/css/estilos.css}" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap"
+	rel="stylesheet">
 </head>
 <body>
-
+	<div class="alert alert-success">
+		<span
+			th:text="'Tiempo de carga: ' + ${tiempoTranscurrido} + ' milisegundos'"></span>
+	</div>
 	<div class="container">
-	<a th:href="@{/app/form}" class="btn btn-success my-3">Volver</a>
+		<a th:href="@{/app/form}" class="btn btn-success my-3">Volver</a>
 		<ul class="list-group my-3">
 			<h1 class="list-group-item active" th:text="${titulo}"></h1>
 			<li class="list-group-item">Habilitar: <span
@@ -55,7 +60,7 @@
 				<li class="list-group-item" th:text="'id:' + ${role.id} "></li>
 				<li class="list-group-item" th:text=" 'nombre:' + ${role.nombre}"></li>
 				<li class="list-group-item" th:text="'role:' + ${role.role}"></li>
-				<hr/>
+				<hr />
 			</div>
 		</ul>
 	</div>
