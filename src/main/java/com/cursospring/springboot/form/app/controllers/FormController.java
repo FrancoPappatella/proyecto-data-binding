@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -89,26 +90,29 @@ public class FormController {
 
 	}
 
-	/*
-	 * @PostMapping("/subir") public String procesar(Model model, @RequestParam
-	 * String username, @RequestParam String password, @RequestParam String email) {
-	 * Usuario usuario = new Usuario(); usuario.setUsername(username);
-	 * usuario.setEmail(email); usuario.setPassword(password);
-	 * model.addAttribute("titulo", "Resultado form: ");
-	 * model.addAttribute("usuario",usuario); return "resultado"; }
-	 * 
-	 * Version más limpia. Se puede indicar para recibir un objeto ya que el nombre
-	 * de los parámetros (username, password) en HTML es igual a las propiedades del
-	 * objeto
-	 */
-
 	@PostMapping("/subir") // Versión más limpia
-	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
-		model.addAttribute("titulo", "Resultado form: ");
+	public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Resultado form: ");
 			return "form";
 		}
 		model.addAttribute("usuario", usuario);
+
+		return "redirect:/app/ver";
+	}
+
+	/*
+	 * Se hace uso del redirect para hacer uso de una nueva petición, para impedir
+	 * que los datos enviados al formulario se envíen 2 veces al refrescar la vista de resultado
+	 */
+
+	@GetMapping("/ver")
+	public String ver(@SessionAttribute(name="usuario", required = false) Usuario usuario,Model model, SessionStatus status) {
+		if(usuario == null) {
+			return "redirect:/app/form";
+		}
+		model.addAttribute("titulo", "Resultado form: ");
+
 		status.setComplete();
 		return "resultado";
 	}

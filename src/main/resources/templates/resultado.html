@@ -3,34 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1 th:text="${titulo}"></h1>
 
-	<ul>
-		<li>Habilitar: <span th:text="${usuario.habilitar}"></span></li>
-		<li>Género: <span th:text="${usuario.genero}"></span></li>
-		<li>Id de país: <span th:text="${usuario.pais.id}"></span></li>
-		<li>Código de País: <span th:text="${usuario.pais.codigo}"></span></li>
-		<li>Nombre de País: <span th:text="${usuario.pais.nombre}"></span></li>
-		<li>Nombre: <span th:text="${usuario.nombre}"></span></li>
-		<li>Apellido: <span th:text="${usuario.apellido}"></span></li>
-		<li>Username: <span th:text="${usuario.username}"></span></li>
-		<li>Password: <span th:text="${usuario.password}"></span></li>
-		<li>Email: <span th:text="${usuario.email}"></span></li>
-		<li>Identificador: <span th:text="${usuario.identificador}"></span></li>
-		<li>Edad: <span th:text="${usuario.edad}"></span></li>
-		<li>Fecha de nacimiento: <span
-			th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></span></li>
-	</ul>
+	<div class="container">
+	<a th:href="@{/app/form}" class="btn btn-success my-3">Volver</a>
+		<ul class="list-group my-3">
+			<h1 class="list-group-item active" th:text="${titulo}"></h1>
+			<li class="list-group-item">Habilitar: <span
+				th:text="${usuario.habilitar}"></span></li>
+			<li class="list-group-item">Género: <span
+				th:text="${usuario.genero}"></span></li>
+			<li class="list-group-item">Id de país: <span
+				th:text="${usuario.pais.id}"></span></li>
+			<li class="list-group-item">Código de País: <span
+				th:text="${usuario.pais.codigo}"></span></li>
+			<li class="list-group-item">Nombre de País: <span
+				th:text="${usuario.pais.nombre}"></span></li>
+			<li class="list-group-item">Nombre: <span
+				th:text="${usuario.nombre}"></span></li>
+			<li class="list-group-item">Apellido: <span
+				th:text="${usuario.apellido}"></span></li>
+			<li class="list-group-item">Username: <span
+				th:text="${usuario.username}"></span></li>
+			<li class="list-group-item">Password: <span
+				th:text="${usuario.password}"></span></li>
+			<li class="list-group-item">Email: <span
+				th:text="${usuario.email}"></span></li>
+			<li class="list-group-item">Identificador: <span
+				th:text="${usuario.identificador}"></span></li>
+			<li class="list-group-item">Edad: <span
+				th:text="${usuario.edad}"></span></li>
+			<li class="list-group-item">Fecha de nacimiento: <span
+				th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></span>
+			</li>
+		</ul>
 
-	<div>Roles</div>
 
-	<ul th:each="role:${usuario.roles}">
-		<li th:text="'id:' + ${role.id} "></li>
-		<li th:text=" 'nombre:' + ${role.nombre}"></li>
-		<li th:text="'role:' + ${role.role}"></li>
-	</ul>
-
+		<ul class="list-group my-3">
+			<h1 class="list-group-item active">Roles</h1>
+			<div th:each="role:${usuario.roles}">
+				<li class="list-group-item" th:text="'id:' + ${role.id} "></li>
+				<li class="list-group-item" th:text=" 'nombre:' + ${role.nombre}"></li>
+				<li class="list-group-item" th:text="'role:' + ${role.role}"></li>
+				<hr/>
+			</div>
+		</ul>
+	</div>
 </body>
 </html>
