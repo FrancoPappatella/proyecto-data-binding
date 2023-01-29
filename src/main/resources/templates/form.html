@@ -17,14 +17,10 @@
 	rel="stylesheet">
 
 </head>
-<div class="alert alert-success">
-	<span
-		th:text="'Tiempo de carga: ' + ${tiempoTranscurrido} + ' milisegundos'"></span>
-</div>
 <body id="form-body">
-
+	<section th:replace="componentes/tiempo :: interceptor"></section>
 	<div class="container my-5" id="contenedor-form">
-			<h1 id="titulo-form" th:text="${titulo}"></h1>
+		<h1 id="titulo-form" th:text="${titulo}"></h1>
 		<form th:action="@{/app/subir}" th:object="${usuario}" method="POST">
 
 			<div class="form-group row my-3">
